@@ -1,6 +1,18 @@
-import {Handler} from "aws-lambda";
 import {getNewsUrl} from "../../core";
 
-export const handler: Handler<string, string> = async (url: string): Promise<string> => {
-    return getNewsUrl(url)
+type Request = {
+    url: string;
+}
+
+type Response = {
+    in: string;
+    out: string;
+}
+
+export const handler = async (event: Request): Promise<Response> => {
+    const url = await getNewsUrl(event.url)
+    return {
+        in: event.url,
+        out: url,
+    }
 }
