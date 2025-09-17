@@ -1,12 +1,7 @@
-import {Handler} from 'aws-lambda';
 import * as playwright from 'playwright-aws-lambda';
 
 import 'source-map-support/register';
 import {ChromiumBrowser, Page} from "playwright-core";
-
-export const newsUrlHandler: Handler<string, string> = async (url: string): Promise<string> => {
-    return getNewsUrl(url)
-}
 
 export const getNewsUrl = async (url: string): Promise<string> => {
     return newPage(url)
