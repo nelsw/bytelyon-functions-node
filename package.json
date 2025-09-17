@@ -1,0 +1,33 @@
+{
+  "name": "bytelyon-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx jest",
+    "prebuild": "rm -rf dist",
+    "build": "esbuild index.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=dist/index.js",
+    "postbuild": "cd dist && zip -r index.zip index.js*"
+  },
+  "private": true,
+  "dependencies": {
+    "aws-lambda": "^1.0.7",
+    "aws-sdk": "^2.1692.0",
+    "playwright-aws-lambda": "^0.11.0",
+    "playwright-core": "^1.55.0",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.4",
+    "@babel/plugin-transform-typescript": "^7.28.0",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-flow": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "@types/aws-lambda": "^8.10.152",
+    "@types/jest": "^30.0.0",
+    "babel-jest": "^30.1.2",
+    "esbuild": "^0.25.9",
+    "jest": "^30.1.3",
+    "ts-jest": "^29.4.2"
+  }
+}
